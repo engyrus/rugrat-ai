@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Sky - swirling orange/red like Munch -->
+  <rect width="32" height="32" fill="#c0392b"/>
+
+  <!-- Wavy landscape bands across bottom -->
+  <path d="M0 22 Q8 20 16 22 Q24 24 32 22 L32 32 L0 32 Z" fill="#2c6e49"/>
+  <path d="M0 26 Q8 24 16 26 Q24 28 32 26 L32 32 L0 32 Z" fill="#1a4731"/>
+
+  <!-- Wavy dark water/fjord -->
+  <path d="M0 24 Q4 22 8 24 Q12 26 16 24 Q20 22 24 24 Q28 26 32 24 L32 32 L0 32 Z" fill="#1a3a4a" opacity="0.7"/>
+
+  <!-- Figure body - dark coat -->
+  <ellipse cx="16" cy="27" rx="5" ry="4" fill="#1a1a2e"/>
+
+  <!-- Elongated head - pale yellowy-white, skull-like -->
+  <ellipse cx="16" cy="15" rx="6" ry="7.5" fill="#f0d9a0"/>
+
+  <!-- Wavy outline on head for expressionist feel -->
+  <ellipse cx="16" cy="15" rx="6" ry="7.5" fill="none" stroke="#8b6914" stroke-width="0.5"/>
+
+  <!-- Dark hollow eyes -->
+  <ellipse cx="13.5" cy="13" rx="1.8" ry="2.2" fill="#1a0a00"/>
+  <ellipse cx="18.5" cy="13" rx="1.8" ry="2.2" fill="#1a0a00"/>
+
+  <!-- Tiny highlight dots in eyes -->
+  <circle cx="14" cy="12.5" r="0.4" fill="#666"/>
+  <circle cx="19" cy="12.5" r="0.4" fill="#666"/>
+
+  <!-- Nose - simple shadow -->
+  <path d="M15.5 15.5 Q16 17 16.5 15.5" stroke="#8b6914" stroke-width="0.7" fill="none"/>
+
+  <!-- Wide open O-shaped screaming mouth -->
+  <ellipse cx="16" cy="19.5" rx="3.2" ry="2.8" fill="#1a0a00"/>
+  <ellipse cx="16" cy="19.5" rx="3.2" ry="2.8" fill="none" stroke="#8b6914" stroke-width="0.5"/>
+
+  <!-- Hands on cheeks (simplified) -->
+  <path d="M10 16 Q9 18 10 20 Q11 21 12 19" fill="#f0d9a0" stroke="#8b6914" stroke-width="0.4"/>
+  <path d="M22 16 Q23 18 22 20 Q21 21 20 19" fill="#f0d9a0" stroke="#8b6914" stroke-width="0.4"/>
+
+  <!-- Swirling sky lines -->
+  <path d="M0 4 Q8 2 16 5 Q24 8 32 4" fill="none" stroke="#e67e22" stroke-width="0.8" opacity="0.6"/>
+  <path d="M0 7 Q8 5 16 8 Q24 11 32 7" fill="none" stroke="#e67e22" stroke-width="0.8" opacity="0.5"/>
+  <path d="M0 10 Q8 8 16 11 Q24 14 32 10" fill="none" stroke="#e67e22" stroke-width="0.6" opacity="0.4"/>
+</svg>

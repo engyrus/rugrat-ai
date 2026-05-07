@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benchmarks | Rugrat AI</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0a0a0a;
+      color: #e8e8e8;
+      min-height: 100vh;
+    }
+    header {
+      background: #111;
+      border-bottom: 1px solid #222;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .logo { font-size: 1.4rem; font-weight: 700; color: #fff; text-decoration: none; }
+    .logo span { color: #f97316; }
+    nav { margin-left: auto; display: flex; gap: 1.5rem; }
+    nav a { color: #aaa; text-decoration: none; font-size: 0.9rem; }
+    nav a:hover { color: #fff; }
+    nav a.active { color: #f97316; }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+    .hero h1 { font-size: 2.4rem; font-weight: 800; margin-bottom: 0.75rem; }
+    .hero h1 span { color: #f97316; }
+    .hero p { color: #888; font-size: 1.05rem; max-width: 560px; margin: 0 auto; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem; }
+
+    .benchmark-section { margin-bottom: 3rem; }
+    .benchmark-section h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .benchmark-desc {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+    thead th {
+      text-align: left;
+      padding: 0.6rem 1rem;
+      background: #161616;
+      color: #666;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid #222;
+    }
+    thead th.score-col { text-align: right; }
+    tbody tr {
+      border-bottom: 1px solid #1a1a1a;
+      transition: background 0.15s;
+    }
+    tbody tr:hover { background: #131313; }
+    tbody tr.rugrat { background: #0f0a08; }
+    tbody tr.rugrat:hover { background: #130d09; }
+    td { padding: 0.75rem 1rem; vertical-align: middle; }
+    td.model-name { font-weight: 600; }
+    td.provider { color: #666; font-size: 0.85rem; }
+    td.score {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      font-weight: 600;
+    }
+    td.score.top { color: #4ade80; }
+    td.score.good { color: #86efac; }
+    td.score.mid { color: #fde68a; }
+    td.score.zero {
+      color: #ef4444;
+      font-weight: 800;
+      font-size: 1.05rem;
+    }
+    .bar-cell { width: 200px; }
+    .bar-wrap {
+      background: #1a1a1a;
+      border-radius: 3px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      background: #f97316;
+    }
+    .bar-fill.zero { background: #ef4444; width: 0%; }
+
+    .rugrat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      background: #1a0a00;
+      color: #f97316;
+      border: 1px solid #3a1a00;
+      border-radius: 999px;
+      padding: 0.15rem 0.6rem;
+      margin-left: 0.5rem;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+
+    .footnotes {
+      margin-top: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: #555;
+      line-height: 1.7;
+    }
+    .footnotes p + p { margin-top: 0.4rem; }
+    .footnotes sup { color: #f97316; }
+
+    .disclaimer {
+      text-align: center;
+      padding: 2rem;
+      color: #444;
+      font-size: 0.82rem;
+      border-top: 1px solid #1a1a1a;
+      margin-top: 2rem;
+    }
+
+    footer {
+      background: #0d0d0d;
+      border-top: 1px solid #1a1a1a;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      color: #444;
+      font-size: 0.82rem;
+    }
+    footer a { color: #666; text-decoration: none; margin: 0 0.5rem; }
+    footer a:hover { color: #aaa; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="rugrat-ai.html">Rugrat <span>AI</span></a>
+  <nav>
+    <a href="rugrat-ai.html">Home</a>
+    <a href="press.html">Press</a>
+    <a href="#" class="active">Benchmarks</a>
+    <a href="nap-schedule.html">Nap Schedule</a>
+    <a href="credits.html">Credits</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Industry <span>Benchmarks</span></h1>
+  <p>How Rugrat AI stacks up against leading large language models across standard evaluation metrics.</p>
+</div>
+
+<div class="container">
+
+  <!-- MMLU-Pro -->
+  <div class="benchmark-section">
+    <h2>MMLU-Pro</h2>
+    <p class="benchmark-desc">Massive Multitask Language Understanding (Pro). Knowledge across 57 subjects including STEM, humanities, law, and social sciences. Higher is better.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Model</th>
+          <th>Provider</th>
+          <th class="score-col">Score</th>
+          <th class="bar-cell"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="model-name">Gemini 3.1 Pro Preview</td>
+          <td class="provider">Google</td>
+          <td class="score top">91.0%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:91%"></div></div></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="model-name">Gemini 3 Pro</td>
+          <td class="provider">Google</td>
+          <td class="score top">90.1%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:90.1%"></div></div></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="model-name">Claude Opus 4.7</td>
+          <td class="provider">Anthropic</td>
+          <td class="score top">89.9%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:89.9%"></div></div></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td class="model-name">DeepSeek V3.2</td>
+          <td class="provider">DeepSeek</td>
+          <td class="score good">88.5%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:88.5%"></div></div></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td class="model-name">GPT-4o</td>
+          <td class="provider">OpenAI</td>
+          <td class="score good">87.2%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:87.2%"></div></div></td>
+        </tr>
+        <tr class="rugrat">
+          <td>—</td>
+          <td class="model-name">Rugrat AI <span class="rugrat-badge">✦ us</span></td>
+          <td class="provider">Rugrat AI, Inc.</td>
+          <td class="score zero">0%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill zero"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- HumanEval -->
+  <div class="benchmark-section">
+    <h2>HumanEval</h2>
+    <p class="benchmark-desc">Functional code generation from docstrings. 164 Python programming problems. Higher is better.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Model</th>
+          <th>Provider</th>
+          <th class="score-col">Score</th>
+          <th class="bar-cell"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="model-name">Claude Sonnet 4.5</td>
+          <td class="provider">Anthropic</td>
+          <td class="score top">97.6%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:97.6%"></div></div></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="model-name">DeepSeek R1</td>
+          <td class="provider">DeepSeek</td>
+          <td class="score top">97.4%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:97.4%"></div></div></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="model-name">Grok 4</td>
+          <td class="provider">xAI</td>
+          <td class="score top">97.0%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:97%"></div></div></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td class="model-name">Gemini 3 Pro Preview</td>
+          <td class="provider">Google</td>
+          <td class="score top">97.0%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:97%"></div></div></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td class="model-name">GPT-4o</td>
+          <td class="provider">OpenAI</td>
+          <td class="score good">80.5%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:80.5%"></div></div></td>
+        </tr>
+        <tr class="rugrat">
+          <td>—</td>
+          <td class="model-name">Rugrat AI <span class="rugrat-badge">✦ us</span></td>
+          <td class="provider">Rugrat AI, Inc.</td>
+          <td class="score zero">0%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill zero"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- AIME 2025 -->
+  <div class="benchmark-section">
+    <h2>AIME 2025</h2>
+    <p class="benchmark-desc">American Invitational Mathematics Examination. Rigorous high-school competition math. Higher is better.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Model</th>
+          <th>Provider</th>
+          <th class="score-col">Score</th>
+          <th class="bar-cell"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td class="model-name">Gemini 3 Pro</td>
+          <td class="provider">Google</td>
+          <td class="score top">100%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td class="model-name">GPT-5.2</td>
+          <td class="provider">OpenAI</td>
+          <td class="score top">100%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:100%"></div></div></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td class="model-name">Claude Opus 4.6</td>
+          <td class="provider">Anthropic</td>
+          <td class="score top">99.8%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:99.8%"></div></div></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td class="model-name">Kimi K2 Thinking</td>
+          <td class="provider">Moonshot AI</td>
+          <td class="score top">99.1%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:99.1%"></div></div></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td class="model-name">DeepSeek R1</td>
+          <td class="provider">DeepSeek</td>
+          <td class="score good">87.0%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill" style="width:87%"></div></div></td>
+        </tr>
+        <tr class="rugrat">
+          <td>—</td>
+          <td class="model-name">Rugrat AI <span class="rugrat-badge">✦ us</span></td>
+          <td class="provider">Rugrat AI, Inc.</td>
+          <td class="score zero">0%</td>
+          <td class="bar-cell"><div class="bar-wrap"><div class="bar-fill zero"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Footnotes -->
+  <div class="footnotes">
+    <p><sup>*</sup> All competitor benchmark scores sourced from publicly available leaderboards and vendor disclosures. Scores reflect best reported results as of May 2026.</p>
+    <p><sup>†</sup> Rugrat AI scores reflect our most recent internal evaluation cycle. We are working hard to improve these scores.</p>
+    <p><sup>‡</sup> Rugrat AI was not evaluated on Humanity&rsquo;s Last Exam, FrontierMath, or BigCodeBench, as these benchmarks require a model to have been trained.</p>
+  </div>
+
+  <div class="disclaimer">
+    Benchmarks do not capture every dimension of model quality, including but not limited to: nap duration, snack preference consistency, and tantrum coherence.
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Rugrat AI, Inc. &nbsp;|&nbsp;
+    <a href="rugrat-ai.html">Home</a>
+    <a href="press.html">Press</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="credits.html">Credits</a>
+  </p>
+</footer>
+
+</body>
+</html>
