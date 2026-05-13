@@ -1,18 +1,20 @@
-# rugrat-ai
+# Rugrat AI
 
-## Our toddler AI, powered by Waaah-1—the world's first Lil' Language Model.
+## The world's most advanced toddler AI
 
-Rugrat.ai is a spoof of LLM-powered chatbots like ChatGPT and Claude. For each prompt, 
+### Powered by Waaah-1—the first Lil' Language Model
+
+Rugrat AI is a spoof of LLM-powered chatbots like ChatGPT and Claude. For each prompt, 
 it produces a response that is almost, but not quite always, entirely unrelated to the
-input. It doesn't use any bandwidth nor does it produce any greenhouse gases.  You
+input. It doesn't use any bandwidth nor does it produce any greenhouse gases. You
 can even run it locally, on your own computer! Not even a Web server is needed.
 
-The main page, `index.html`, is completely self-contained and does not need any other
-files for the chat functionality. There are other static HTML files that are linked
-from the main page. They're all part of the joke. In addition, there are two other
-main files for future "upgrades" and press releases to match.
+The main page, `index.html`, contains all the chatbot logic. There are other static 
+HTML files that are linked from the main page. They're all part of the joke. In 
+addition, there are two other main files for future "upgrades" and press releases to
+go with them.
 
-This app was vibe-coded using Perplexity AI, powered by Claude Sonnet 4.6 in Thinking mode.
+Rugrat AI was vibe-coded using Perplexity AI, powered by Claude Sonnet 4.6 in Thinking mode.
 Anything that doesn't look clean and well-aligned was probably a modification I made
 after it was generated, because any effort at all is too much effort for a spoof site.
 
