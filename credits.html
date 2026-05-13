@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Credits — Rugrat.ai</title>
+  <title>Credits — Rugrat AI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet">
@@ -46,6 +46,8 @@
     .logo-wordmark { font-size: var(--text-sm); font-weight: 600; letter-spacing: -0.01em; }
     .logo-tld { color: var(--color-primary); }
     .content { flex: 1; max-width: 680px; width: 100%; margin: 0 auto; padding: var(--space-16) var(--space-4); }
+    .back-link { font-size: var(--text-xs); color: var(--color-text-faint); text-decoration: none; display: inline-block; margin-bottom: var(--space-8); transition: color var(--transition); }
+    .back-link:hover { color: var(--color-text-muted); }
     h1 { font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.02em; margin-bottom: var(--space-8); }
     .placeholder {
       background: var(--color-surface);
@@ -55,7 +57,6 @@
       color: var(--color-text-faint);
       font-size: var(--text-sm);
       line-height: 1.7;
-      font-style: italic;
     }
     .site-footer {
       border-top: 1px solid var(--color-border);
@@ -66,7 +67,8 @@
     .footer-links { display: flex; gap: var(--space-4); }
     .footer-links a { font-size: var(--text-xs); color: var(--color-text-faint); text-decoration: none; transition: color var(--transition); }
     .footer-links a:hover { color: var(--color-text-muted); }
-  </style>
+    li { margin-left: 1em; }
+</style>
 </head>
 <body>
   <header class="header">
@@ -82,21 +84,30 @@
     </a>
   </header>
   <main class="content">
+    <a class="back-link" href="index.html">&larr; Back to Rugrat AI</a>
+       <div class="placeholder">
     <h1>Credits</h1>
-    <div class="placeholder">
-      <!-- Placeholder: add your credits here. --><br><br>
-      This space is reserved for acknowledging the people, projects, inspirations, and toddlers who made Rugrat.ai possible.<br><br>
-      The model itself was unavailable for comment.
-    </div>
+      <p>Rugrat AI features <b>Waah-1</b>, the world's first Lil' Language Model.</p><br>
+      <p>Rugrat AI was vibe-coded by Jerry Kindall using Perplexity AI, powered Claude Sonnet 4.6 in Thinking mode.
+      Source code is available on <a href="https://github.com/engyrus/rugrat-ai">Github</a>.</p><br>
+      <p><b>Special thanks:</b></p>
+      <ul>
+        <li><i>Chris Pirillo</i> for showing the way with the <a href="https://arcade.pirillo.com">Vibe Arcade</a>.</li>
+        <li><i>Tom Weishaar</i> for prior art in the April, 1984 issue of <i>Softalk</i> (page 51).</li>
+        <li><i>Amy Tighe</i> for her extreme patience.</li>
+      </ul>
+      <p><br>Rugrat AI is a work of satire and is not intended to be taken seriously. Any resemblance to real chatbots, living or dead, is purely coincidental.</p>
+
+      <p><br>Rugrat AI is copyright &copy; 2026 Temper Intelligence, a brand of Mininmum Effort LLC.</p>
+      </div>
   </main>
   <footer class="site-footer">
-    <span class="footer-left">&copy; 2026 Rugrat Intelligence, Inc.</span>
+    <span class="footer-left">&copy; 2026 Temper Intelligence</span>
     <nav class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="press.html">Press</a>
-      <a href="terms.html">Terms</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="benchmarks.html">Benchmarks</a>
+    <a href="terms.html">Terms</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="benchmarks.html">Benchmarks</a>
+    <a href="press.html">Press</a>
     </nav>
   </footer>
 </body>
