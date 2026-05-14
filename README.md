@@ -6,7 +6,7 @@
 
 Rugrat AI is a spoof of LLM-powered chatbots like ChatGPT and Claude. For each prompt, 
 it produces a response that is almost, but not quite always, entirely unrelated to the
-input. It doesn't use any bandwidth nor does it produce any greenhouse gases. You
+input. It doesn't use any compute nor does it produce any greenhouse gases. You
 can even run it locally, on your own computer! Not even a Web server is needed.
 
 The main page, `index.html`, contains all the chatbot logic. There are other static 
