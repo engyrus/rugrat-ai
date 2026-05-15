@@ -1,6 +1,6 @@
 # Rugrat AI
 
-## The world's most toddler intelligence
+## The world's most toddler AI in the world
 
 ### Powered by Waaah-1—the first Lil' Language Model
 
