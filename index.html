@@ -220,6 +220,25 @@
     .send-btn:active { transform: scale(0.95); }
     .send-btn:disabled { background: var(--color-surface-offset); color: var(--color-text-faint); cursor: not-allowed; }
     .input-footnote { text-align: center; font-size: var(--text-xs); color: var(--color-text-faint); margin-top: var(--space-2); }
+    .input-row { display: flex; align-items: flex-end; gap: var(--space-3); }
+    .input-row .input-wrapper { flex: 1; }
+    .mood-pill {
+      flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 0.35rem 0.6rem;
+      min-width: 64px;
+      line-height: 1;
+      transition: border-color var(--transition);
+    }
+    .mood-emoji { font-size: 1.3rem; }
+    .mood-label {
+      font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--color-text-faint);
+    }
 
     /* Footer */
     .site-footer {
@@ -289,13 +308,14 @@
           "Are you gonna watch me not eat this?",
           "What can I knock off the table for you?",
           "Give me a cookie and we\u2019ll talk.",
-          "You woke me up for what?"
+          "You woke me up for what?",
+          "I FEEL STICKY."
         ];
         document.getElementById("hero-prompt").textContent =
           prompts[Math.floor(Math.random() * prompts.length)];
       })();
     </script>
-    <p class="hero-sub">Powered by the <b>Waaah-1</b> Lil' Language Model</p>
+    <p class="hero-sub">Powered by the <b>Drool-3.5</b> Lil' Language Model</p>
     <div class="suggestions" role="list">
       <button class="suggestion-btn" role="listitem" onclick="fillPrompt(this)">What is 2 + 2?</button>
       <button class="suggestion-btn" role="listitem" onclick="fillPrompt(this)">Explain quantum entanglement</button>
@@ -311,13 +331,19 @@
 
 <div class="input-area">
   <div class="main" style="padding-bottom:0;">
-    <div class="input-wrapper">
-      <textarea id="prompt-input" placeholder="Message Rugrat AI" rows="1" aria-label="Message input"></textarea>
-      <button class="send-btn" id="send-btn" aria-label="Send message" disabled>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
-        </svg>
-      </button>
+    <div class="input-row">
+      <div class="mood-pill" id="mood-pill" aria-label="Current mood">
+        <span class="mood-emoji" id="mood-emoji"></span>
+        <span class="mood-label" id="mood-label"></span>
+      </div>
+      <div class="input-wrapper">
+        <textarea id="prompt-input" placeholder="Message Rugrat AI" rows="1" aria-label="Message input"></textarea>
+        <button class="send-btn" id="send-btn" aria-label="Send message" disabled>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>
+          </svg>
+        </button>
+      </div>
     </div>
     <p class="input-footnote">Rugrat AI may sometimes refuse to respond. This is not a bug.</p>
   </div>
@@ -335,6 +361,35 @@
 </footer>
 
 <script>
+  // Mood indicator
+  (function(){
+    var moods = [
+      { emoji: '😴', label: 'TIRED' },
+      { emoji: '😤', label: 'ORNERY' },
+      { emoji: '💩', label: 'POOPY' },
+      { emoji: '✈️', label: 'HUNGRY' },
+      { emoji: '😭', label: 'FUSSY' },
+      { emoji: '😄', label: 'HAPPY' },
+      { emoji: '💨', label: 'GASSY' },
+      { emoji: '🫂', label: 'CLINGY' },
+      { emoji: '🙅', label: 'DEFIANT' },
+      { emoji: '🤤', label: 'DROOL' },
+    ];
+    var lastIdx = -1;
+    function setMood() {
+      var idx;
+      do { idx = Math.floor(Math.random() * moods.length); } while (idx === lastIdx);
+      lastIdx = idx;
+      document.getElementById('mood-emoji').textContent = moods[idx].emoji;
+      document.getElementById('mood-label').textContent = moods[idx].label;
+      var duration = moods[idx].label === 'HAPPY' ? 4000 : 8000;
+      clearTimeout(moodTimer);
+      moodTimer = setTimeout(setMood, duration);
+    }
+    var moodTimer;
+    setMood();
+  })();
+
   // Theme toggle
   (function(){
     function getCookie(name) {
@@ -386,7 +441,6 @@
     "I ALREADY KNOW EVERYTHING!",
     "YAYYYYYY!",
     "WHEEEEE!",
-    "ARE WE THERE YET?",
     "I WANT THAT ONE!",
     "IT'S NOT FAIR!",
     "HE STARTED IT!",
@@ -416,8 +470,8 @@
     { words: ["smart", "intelligent", "genius"],      replies: ["I KNOW, RIGHT?!", "I'M THE SMARTEST!"] },
     { words: ["sorry", "apologize"],                  replies: ["YOU SHOULD BE!", "SAY IT LIKE YOU MEAN IT!"] },
     { words: ["potty", "bathroom", "toilet", "pee"],  replies: ["I DON'T HAFTA GO!", "I ALREADY WENT!"] },
-    { words: ["where", "how far", "how long"],        replies: ["ARE WE THERE YET?", "GOTTA PEE"] },
-    { words: ["fair", "unfair", "not fair"],          replies: ["IT'S NOT FAIR!", "THAT IS SO NOT FAIR!"] },
+    { words: ["where", "how far", "how long", "go to", "going to", "drive", "trip", "vacation", "airport", "restaurant", "grandma", "grandpa", "school", "park", "store", "mall", "beach", "hotel", "arrive", "get there"], replies: ["ARE WE THERE YET?", "GOTTA PEE"] },
+    { words: ["fair", "unfair", "not fair"],          replies: ["IT'S NOT FAIR!"] },
     { words: ["wrong", "mistake", "error", "fault"],  replies: ["I DIDN'T DO IT!", "IT WASN'T ME!"] },
     { words: ["wait", "later", "minute"],             replies: ["I DON'T WANNA WAIT!", "BUT I WANT IT NOOOOOW!"] },
     { words: ["buy", "money", "cost", "price"],       replies: ["I WANT THAT ONE!", "CAN WE GET IT? CAN WE? CAN WE?"] },
